@@ -1,0 +1,57 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrainsKotlinKsp)
+    alias(libs.plugins.hiltPlugin)
+}
+
+android {
+    namespace 'com.onecab.source_web'
+    compileSdk compileSdk_version
+
+    defaultConfig {
+        minSdk minSdk_version
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    // Core Kotlin
+    implementation libs.androidx.core.ktx
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.11.0'
+
+    // Converters
+//    implementation 'com.google.code.gson:gson:2.11.0'
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+
+    // DI Dagger-Hilt
+    implementation libs.hilt.android
+    ksp(libs.dagger.compiler)
+    ksp(libs.hilt.compiler)
+
+    // Modules
+    implementation project(path: ':domain')
+
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+}

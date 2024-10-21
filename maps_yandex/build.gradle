@@ -1,0 +1,71 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrainsKotlinKsp)
+    alias(libs.plugins.hiltPlugin)
+}
+
+android {
+    namespace 'com.onecab.maps_yandex'
+    compileSdk compileSdk_version
+
+    defaultConfig {
+        minSdk minSdk_version
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = kotlinCompilerExtension_Version
+    }
+}
+
+dependencies {
+// Kotlin core
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.lifecycle.runtime.ktx
+    implementation libs.androidx.appcompat
+
+    // UI
+    implementation platform(libs.androidx.compose.bom)
+    implementation libs.androidx.ui
+    implementation libs.androidx.ui.graphics
+    implementation libs.ui.tooling
+    implementation libs.androidx.ui.tooling.preview
+    implementation libs.androidx.material3
+
+    // Yandex maps api full
+    implementation 'com.yandex.android:maps.mobile:4.8.0-full'
+
+    // DI Dagger-Hilt
+    implementation libs.hilt.android
+    ksp(libs.dagger.compiler)
+    ksp(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    // modules
+//    implementation project(path: ':core')
+//    implementation project(path: ':navigation:navigation-api')
+
+    // Tests
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+}

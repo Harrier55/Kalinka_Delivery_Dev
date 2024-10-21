@@ -1,0 +1,35 @@
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "Kalinka Delivery"
+include ':app'
+include ':core'
+include ':features'
+include ':feature_qr_scaner'
+include ':navigation'
+include ':navigation:navigation-api'
+include ':navigation:navigation-impl'
+include ':roomDB'
+include ':domain'
+include ':data'
+include ':source_web'
+include ':maps_yandex'
+include ':crashlytics'

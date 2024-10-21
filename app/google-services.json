@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "477527064280",
+    "project_id": "ab-kalinkadelivery",
+    "storage_bucket": "ab-kalinkadelivery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477527064280:android:e9b9d3e30026476fb261ad",
+        "android_client_info": {
+          "package_name": "com.onecab.kalinkadelivery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChDGP0xtsKrsfNyuqNZrwnkg9W9qgGtig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
